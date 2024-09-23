@@ -7,7 +7,7 @@ process sayHello {
     stdout
   script:
     """
-    echo '$x Ha Đào!'
+    echo '$projectDir Ha Đào!'
     """
 }
 
