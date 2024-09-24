@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nextflow-job
+spec:
+  template:
+    metadata:
+      name: nextflow-pod
+    spec:
+      containers:
+      - name: nextflow
+        image: thanhct/nextflow-job:latest
+        command: ["nextflow"]
+        args: ["run", "thanhct/hello"]  # Replace with your Nextflow script or pipeline
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+      restartPolicy: Never
+  backoffLimit: 4
