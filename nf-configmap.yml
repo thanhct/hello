@@ -1,0 +1,58 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nf-config-8e0c345c
+  namespace: default
+  uid: a0f2e191-fbab-4de5-9b40-23c9f74f4f4e
+  resourceVersion: '507655'
+  creationTimestamp: '2024-09-24T15:13:59Z'
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"init.sh":"#!/bin/bash\necho \"Initializing
+      Nextflow environment...\"\nexport NXF_WORK=/mnt/data/work\nexport
+      NXF_ASSETS=/mnt/data/projects\nexport NXF_EXECUTOR=k8s\nexport
+      NXF_ANSI_LOG=false\n","nextflow.config":"process.executor = 'k8s'\nworkDir
+      = '/mnt/data/work'\n\nk8s {\n  namespace = 'default'\n  serviceAccount =
+      'default'\n  storageClaimName = 'nam-pvc'\n  storageMountPath =
+      '/mnt/data'\n}\n\nprofiles {\n  standard {\n    process.container =
+      'nextflow/nextflow:24.08.0-edge'\n 
+      }\n}\n"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"nf-config-8e0c345c","namespace":"default"}}
+  managedFields:
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: v1
+      time: '2024-09-24T15:13:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:init.sh: {}
+          f:nextflow.config: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+data:
+  init.sh: |
+    #!/bin/bash
+    echo "Initializing Nextflow environment..."
+    export NXF_WORK=/mnt/data/work
+    export NXF_ASSETS=/mnt/data/projects
+    export NXF_EXECUTOR=k8s
+    export NXF_ANSI_LOG=false
+  nextflow.config: |
+    process.executor = 'k8s'
+    workDir = '/mnt/data/work'
+
+    k8s {
+      namespace = 'default'
+      serviceAccount = 'default'
+      storageClaimName = 'nam-pvc'
+      storageMountPath = '/mnt/data'
+    }
+
+    profiles {
+      standard {
+        process.container = 'nextflow/nextflow:24.08.0-edge'
+      }
+    }
