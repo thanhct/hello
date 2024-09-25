@@ -1,27 +1,10 @@
-# apiVersion: v1
-# kind: PersistentVolume
-# metadata:
-#   name: nf-pv
-# spec:
-#   capacity:
-#     storage: 80Gi
-#   volumeMode: Filesystem
-#   accessModes:
-#     - ReadWriteMany
-#   persistentVolumeReclaimPolicy: Retain
-#   storageClassName: standard
-#   hostPath:
-#     path: "/mnt/nextflow-data"
-#     type: DirectoryOrCreate
-
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nam-pv
+  name: nextflow-pv
 spec:
   capacity:
-    storage: 40Gi
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
   storageClassName: standard
